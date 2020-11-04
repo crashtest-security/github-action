@@ -1,0 +1,13 @@
+name: 'Crashtest Security Action'
+description: 'A Github Action for Running a Crashtest Security scan to perform Dynamic Application Security Testing (DAST).'
+inputs:
+  crashtest-webhook:
+    description: 'Webhook Secret of the Crashtest Security Scan Target'
+    required: true
+  pull-report:
+    description: 'Flag whether the report should be downloaded as JUnit XML file'
+    required: false
+    default: 'false'
+runs:
+  using: 'node12'
+  main: 'index.js'
