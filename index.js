@@ -16,6 +16,7 @@ async function run() {
 
         // Setup general variables
         const apiEndpoint = 'https://api.crashtest.cloud/webhook';
+        const pollTimeout = 60000; // Polling the scan status every 60 seconds
         let status = 100; // 100 = Queued
         let scanId = undefined;
 
@@ -44,7 +45,7 @@ async function run() {
         console.log(`Started Scan for Webhook ${crashtestWebhook}. Scan ID is ${scanId}.`)
 
         // Check if the action should wait for the report and download it
-        if (pullReport == 'false') {
+        if (pullReport === 'false') {
             console.log(`Skipping the download of the scan report as pull-report='${pullReport}'.`);
             return
         }
@@ -54,7 +55,7 @@ async function run() {
             console.log(`Scan Status currently is ${status} (101 = Running)`);
 
             // Only poll every minute
-            await wait(60000);
+            await wait(pollTimeout);
 
             // Refresh status
             try {
