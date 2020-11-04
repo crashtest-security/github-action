@@ -1,5 +1,8 @@
 name: 'Crashtest Security Action'
 description: 'A Github Action for Running a Crashtest Security scan to perform Dynamic Application Security Testing (DAST).'
+branding:
+  icon: 'alert-triangle'
+  color: 'red'
 inputs:
   crashtest-webhook:
     description: 'Webhook Secret of the Crashtest Security Scan Target'
